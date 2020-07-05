@@ -42,9 +42,6 @@ $(document).ready(function () {
   var prev = $(".prev");
 
   next.click(nextImg);
-  if (true) {
-
-  }
   prev.click(prevImg);
 
   $(document).keydown(function(){
