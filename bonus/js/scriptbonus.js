@@ -54,12 +54,28 @@ function prevImg() {
   }
 }
 
-
+// da ricreare: soluzione non fattibile se ho un grande numero di immagini, probabilmente devo usare un ciclo per controllare tutte le posizioni piu velocemente
 function clickPallino(){
   var iActive = $(".slider-wrapper .nav i.active");
+  var imgActive = $(".slider-wrapper img.active");
   // trovare la posizione del pallino cliccato e associarlo a quello della foto corrispondente
-
   iActive.removeClass("active");
+  imgActive.removeClass("active");
   $(this).addClass("active");
-  console.log("fesf");
+  console.log("ha la classe",$(this).prev().hasClass("first"));
+  // console.log($(this).hasClass("first") , $(this).next().hasClass("first") , $(this).prev().hasClass("last") , $(this).hasClass("last"));
+  if ($(this).hasClass("first")) {
+    $(".slider-wrapper img.first").addClass("active");
+  }
+  else if ($(this).prev().hasClass("first")) {
+    $(".slider-wrapper img.first").next().addClass("active");
+  }
+  else if ($(this).next().hasClass("last")) {
+    $(".slider-wrapper img.last").prev().addClass("active");
+  }
+  else if ($(this).hasClass("last")) {
+    $(".slider-wrapper img.last").addClass("active");
+  }
+
+  // console.log("fesf");
 }
